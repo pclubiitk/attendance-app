@@ -1,16 +1,18 @@
+import 'package:attendance_app/screens/capturepic.dart';
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 // registration page starts
 
 class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({super.key});
+  final List<CameraDescription> cameras;
+  const RegistrationPage({super.key, required this.cameras});
 
   @override
   RegistrationPageState createState() => RegistrationPageState();
 }
 
 class RegistrationPageState extends State<RegistrationPage> {
-  final PageController _pageController = PageController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final TextEditingController _nameController = TextEditingController();
@@ -19,11 +21,10 @@ class RegistrationPageState extends State<RegistrationPage> {
   final TextEditingController _bloodGroupController = TextEditingController();
   final TextEditingController _employeeIdController = TextEditingController();
 
-  void _nextPage() {
+ void _nextPage() {
     if (_formKey.currentState?.validate() ?? false) {
-      _pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeIn,
+      Navigator.of(context).push(
+        MaterialPageRoute(builder: (context) =>CapturePicPage(cameras:widget.cameras)),
       );
     }
   }
@@ -43,10 +44,7 @@ class RegistrationPageState extends State<RegistrationPage> {
         ),
         backgroundColor: Colors.grey[850],
       ),
-      body: PageView(
-        controller: _pageController,
-        physics: const NeverScrollableScrollPhysics(),
-        children: [
+      body:
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Form(
@@ -100,25 +98,6 @@ class RegistrationPageState extends State<RegistrationPage> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Capture Your Picture',
-                  style: TextStyle(fontSize: 20),
-                ),
-                const SizedBox(height: 24),
-                ElevatedButton(
-                  onPressed: _submit,
-                  child: const Text('Capture Picture'),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }
