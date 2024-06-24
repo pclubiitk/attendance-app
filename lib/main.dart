@@ -1,8 +1,20 @@
+import 'package:attendance_app/screens/profile_page.dart';
+import 'package:attendance_app/screens/registration.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  // i have made profilepage and the registrtain page
+  // how to capture the image and upload it to the server is remaining
+  // also all the api calls are remaining
+
+  runApp(const MaterialApp(home: ProfilePage()));
+  // runApp(const MaterialApp(home: RegistrationPage()));
+
+  // default app
+  // runApp(const MaterialApp(home: MyApp()));
 }
+
+// defalut code
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
