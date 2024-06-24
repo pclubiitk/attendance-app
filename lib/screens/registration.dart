@@ -278,4 +278,3 @@ class RegistrationPageState extends State<RegistrationPage>{
     );
   }
 }
-
