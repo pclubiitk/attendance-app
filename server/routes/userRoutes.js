@@ -1,8 +1,8 @@
-import { login, markAttendance, registerUser } from "../controllers/userController";
-import { authenticate } from "../middlewares/authenticate";
-import { keyImageValidator } from "../middlewares/inputValidation";
+const { login, markAttendance, registerUser } =  require("../controllers/userController.js");
+const { authenticate } = require("../middlewares/authenticate.js");
+const { keyImageValidator } = require("../middlewares/inputValidation.js");
 
-const express = require("express");
+const express = require('express');
 
 const router = express.Router();
 

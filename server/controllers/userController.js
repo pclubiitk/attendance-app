@@ -1,6 +1,6 @@
-const { User, Attendance } = require("../database/models");
-const bcrypt = require('bcryptjs');
-const jwt = require("jsonwebtoken");
+const { User, Attendance } = require("../database/models.js");
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 
 
