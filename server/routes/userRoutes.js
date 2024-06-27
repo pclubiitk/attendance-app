@@ -7,7 +7,7 @@ const express = require('express');
 const router = express.Router();
 
 router.post("/login",login);
-router.post("registerUser",keyImageValidator ,registerUser);
-router.post("markAttendance",authenticate,markAttendance);
+router.post("/registerUser",keyImageValidator ,registerUser);
+router.post("/markAttendance",authenticate,markAttendance);
 
 module.exports = router;
