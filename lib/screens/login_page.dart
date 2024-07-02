@@ -9,6 +9,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  var size,height,width;
   TextEditingController userIdController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
@@ -19,20 +20,23 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+     // getting the size of the window
+    size = MediaQuery.of(context).size; 
+    height = size.height;
+    width = size.width;
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor:const Color.fromARGB(255, 255, 255, 255),
       body: SafeArea(
-        child: Container(
-          margin: const EdgeInsets.only(left: 25, right: 25 ),
-          alignment: Alignment.center,
-          child: SingleChildScrollView(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
                   'assets/Privacy policy-rafiki.png',
-                  width: 250,
-                  height: 250,
+                 width: double.infinity,
+                  height: height/3,
                 ),
                 // const SizedBox(
                 //   height: 25,
@@ -54,8 +58,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(
-                  height: 30,
+                 SizedBox(
+                  height: height/20,
                 ),
                 Container(
                   // height: 55,
@@ -92,7 +96,7 @@ class _LoginPageState extends State<LoginPage> {
                 const SizedBox(
                   height: 20,
                 ),
-
+                    
                 Container(
                   // height: 55,
                   decoration: BoxDecoration(
@@ -125,8 +129,8 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 
-                const SizedBox(
-                  height: 20,
+                 SizedBox(
+                  height: height/20 ,
                 ),
                 SizedBox(
                   width: double.infinity,
