@@ -40,6 +40,8 @@ dependencies:
   get: ^4.6.6
   google_fonts: ^6.2.1
   flutter_animate: ^4.5.0
+  table_calendar: 
+    path: table_calendar/
 
 dev_dependencies:
   flutter_test:

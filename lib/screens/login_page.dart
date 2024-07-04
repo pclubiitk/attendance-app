@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Container(
                           alignment: Alignment.centerLeft,
                           child: TextField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintStyle: TextStyle(
                                 fontSize: 15
                               ),
@@ -113,7 +113,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Container(
                           alignment: Alignment.centerLeft,
                           child: TextField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintStyle: TextStyle(
                                 fontSize: 15
                               ),
@@ -144,7 +144,7 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {
                         Get.snackbar(
                           "Logged In", "Welcome Back {User}!",
-                          duration: Duration(seconds: 1),
+                          duration: const Duration(seconds: 1),
                           colorText: Colors.white,
                           backgroundColor: Colors.green
                           );
