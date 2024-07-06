@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-
+// import 'package:attendance_app/screens/capturepic.dart';
 
 // registration page starts
 
@@ -11,8 +10,8 @@ class RegistrationPage extends StatefulWidget {
   RegistrationPageState createState() => RegistrationPageState();
 }
 
-class RegistrationPageState extends State<RegistrationPage>{
-  // final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+class RegistrationPageState extends State<RegistrationPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   var size,height,width;
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
@@ -20,13 +19,14 @@ class RegistrationPageState extends State<RegistrationPage>{
   final TextEditingController _bloodGroupController = TextEditingController();
   final TextEditingController _employeeIdController = TextEditingController();
 
- void _nextPage() {
+  void _nextPage() async {
+    await Navigator.pushNamed(context, '/picture');
     Navigator.pushNamed(context, '/login');
     // if (_formKey.currentState?.validate() ?? false) {
     //   Navigator.of(context).push(
-    //     MaterialPageRoute(builder: (context) =>CapturePicPage(cameras:widget.cameras)),
+    //     MaterialPageRoute(
+    //         builder: (context) => CapturePicPage(cameras: widget.cameras)),
     //   );
-    // }
   }
 
   void _submit() {

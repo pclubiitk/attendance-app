@@ -2,7 +2,7 @@ name: attendance_app
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.3 <4.0.0'
+  sdk: ">=3.4.3 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -31,7 +31,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
@@ -40,6 +39,10 @@ dependencies:
   get: ^4.6.6
   google_fonts: ^6.2.1
   flutter_animate: ^4.5.0
+  permission_handler: ^11.3.1
+  path_provider: ^2.1.3
+  path: ^1.9.0
+  image_picker: ^0.8.4+8
 
 dev_dependencies:
   flutter_test:
@@ -57,7 +60,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -79,14 +81,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
-    # - family: OpenSans
-    #   fonts:
-    #     - assets: fonts/OpenSans.ttf
-        # - assets: fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf
-          # italic: true
-    # - family: PoetsenOne-Regular
-    #   fonts:
-    #     - asset: fonts/PoetsenOne-Regular.ttf
+  # - family: OpenSans
+  #   fonts:
+  #     - assets: fonts/OpenSans.ttf
+  # - assets: fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf
+  # italic: true
+  # - family: PoetsenOne-Regular
+  #   fonts:
+  #     - asset: fonts/PoetsenOne-Regular.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

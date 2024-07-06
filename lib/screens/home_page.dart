@@ -1,27 +1,30 @@
-import 'package:attendance_app/screens/drawer.dart';
 import 'package:flutter/material.dart';
+import 'package:attendance_app/components/background_painter.dart';
 
-class HomePage extends StatelessWidget{
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:const Text("Home"),
+        backgroundColor: Colors.blue,
+        title: const Text("ATTENDANCE HISTORY"),
       ),
-      drawer: const Drawer(child: DrawerItems()),
       body: Scaffold(
-        // appBar: ,
-        body: Column(
-          children: [
-            ElevatedButton(
-              onPressed: (){
-                Navigator.pushNamed(context, '/register');
-              }, 
-              child: Text("Back to inital"))
-          ],
-        ),
-        ),
+          // appBar: ,
+          body: Stack(
+        children: [
+          CustomPaint(
+            size: const Size(double.infinity, double.infinity),
+            painter: BackgroundPainter(),
+          ),
+          Column(
+            children: [
+              // calendar code here.
+            ],
+          ),
+        ],
+      )),
     );
   }
 }
