@@ -1,14 +1,13 @@
 import 'package:attendance_app/screens/dashboard.dart';
 import 'package:attendance_app/screens/capturepic.dart';
 import 'package:attendance_app/screens/login_page.dart';
-// import 'package:attendance_app/screens/home_page.dart';
+import 'package:attendance_app/screens/home_page.dart';
 import 'package:attendance_app/screens/registration.dart';
-import 'package:camera/camera.dart';
+
 import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:get/get.dart';
-import 'dart:io';
 
 Future<void> main() async {
   // i have made profilepage and the registrtain page
@@ -34,7 +33,7 @@ class MyApp extends StatelessWidget {
       initialRoute: initialRoute,
       routes: {
         '/login': (context) => const LoginPage(),
-        // '/home': (context) => const HomePage(),
+        '/history': (context) => const HomePage(),
         '/home': (context) => const Dashboard(),
         '/register': (context) => const RegistrationPage(),
         '/picture': (context) => const CapturePicPage(),

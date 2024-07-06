@@ -62,7 +62,9 @@ class DrawerItems extends StatelessWidget {
             NavbarItem(
               icon: LineAwesomeIcons.history_solid,
               text: 'Attendance History',
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, '/history');
+              },
               textStyle: theme.textTheme.bodyLarge
                   ?.copyWith(color: theme.colorScheme.onSurface),
               iconColor: theme.iconTheme.color,
