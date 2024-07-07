@@ -1,5 +1,6 @@
 import 'package:attendance_app/components/navbar_item.dart';
 import 'package:attendance_app/screens/login_page.dart';
+import 'package:attendance_app/screens/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
@@ -24,23 +25,22 @@ class DrawerItems extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: IconButton(
               icon: Icon(IconData(0xe16a, fontFamily: 'MaterialIcons')),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-          ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
           ),
           Container(
             width: 150,
             height: 150,
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
               color: Color.fromARGB(255, 253, 255, 255),
               shape: BoxShape.circle,
               border: Border.all(
-        width: 1,
-        color: const Color.fromARGB(255, 155, 154, 154),
-        style: BorderStyle.solid,
-      ),
-
+                width: 1,
+                color: const Color.fromARGB(255, 155, 154, 154),
+                style: BorderStyle.solid,
+              ),
             ),
             child: Image.asset(
               "assets/Police car-rafiki.png",
@@ -54,7 +54,15 @@ class DrawerItems extends StatelessWidget {
           NavbarItem(
             icon: LineAwesomeIcons.user,
             text: 'Profile',
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        ProfileScreen()), // replace ProfileScreen with your destination widget
+              );
+            },
             textStyle: theme.textTheme.bodyLarge
                 ?.copyWith(color: theme.colorScheme.onSurface),
             iconColor: theme.iconTheme.color,
