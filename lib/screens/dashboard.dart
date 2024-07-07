@@ -56,7 +56,9 @@ class _DashboardState extends State<Dashboard> {
                       ActionButtons(
                         label: "Provide Location",
                         icon: Icons.location_on,
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pushNamed(context, '/location');
+                        },
                       ),
                     ],
                   )

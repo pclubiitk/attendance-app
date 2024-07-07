@@ -11,8 +11,8 @@ class CapturePicPage extends StatefulWidget {
 }
 
 class CapturePicPageState extends State<CapturePicPage> {
-  late CameraController _controller;
-  Future<void> _initializeControllerFuture = Future<void>(() {});
+  CameraController? _controller; // the ? says that the variable can be null
+  Future<void>? _initializeControllerFuture;
   late CameraDescription _currentCamera;
   late Future<List<CameraDescription>> _cameraList;
   bool _isFrontCamera = false;
@@ -26,7 +26,6 @@ class CapturePicPageState extends State<CapturePicPage> {
       if (cameras.isNotEmpty) {
         _currentCamera = cameras.first;
         _initializeController(_currentCamera);
-        setState(() {}); // i have used this to update the state of the widget
       } else {
         Get.snackbar(
           "Error",
@@ -35,7 +34,6 @@ class CapturePicPageState extends State<CapturePicPage> {
           colorText: Colors.white,
           backgroundColor: Colors.red,
         );
-        Navigator.pushNamed(context, '/home');
         Navigator.pop(context);
       }
     });
@@ -46,12 +44,30 @@ class CapturePicPageState extends State<CapturePicPage> {
     return cameras;
   }
 
-  void _initializeController(CameraDescription cameraDescription) async {
+  void _initializeController(CameraDescription cameraDescription) {
     _controller = CameraController(
       cameraDescription,
       ResolutionPreset.medium,
     );
-    _initializeControllerFuture = _controller.initialize();
+    _initializeControllerFuture = _controller!
+        .initialize(); // ! is used to tell the compiler that the variable is not null
+    _initializeControllerFuture?.then((_) {
+      if (!mounted) {
+        return;
+      }
+      setState(() {});
+    }).catchError((Object e) {
+      if (e is CameraException) {
+        switch (e.code) {
+          case 'CameraAccessDenied':
+            // TODO: Handle access errors here.
+            break;
+          default:
+            // TODO: Handle other errors here.
+            break;
+        }
+      }
+    });
   }
 
   Future<void> _toggleCamera() async {
@@ -70,14 +86,15 @@ class CapturePicPageState extends State<CapturePicPage> {
 
   @override
   void dispose() {
-    _controller.dispose();
+    _controller!.dispose();
     super.dispose();
   }
 
   void _captureImage() async {
     try {
       await _initializeControllerFuture;
-      final image = await _controller.takePicture();
+      final image = await _controller!
+          .takePicture(); // ! is used to tell the compiler that the variable is not null
       setState(() {
         _image = image;
       });
@@ -102,6 +119,7 @@ class CapturePicPageState extends State<CapturePicPage> {
 
   @override
   Widget build(BuildContext context) {
+    // App state changed before we got the chance to initialize.
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
@@ -117,13 +135,14 @@ class CapturePicPageState extends State<CapturePicPage> {
           ? FutureBuilder<void>(
               future: _initializeControllerFuture,
               builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.connectionState == ConnectionState.done &&
+                    _controller != null) {
                   return Center(
                     child: Padding(
                       padding: const EdgeInsets.only(top: 15.0),
                       child: Column(
                         children: [
-                          Expanded(child: CameraPreview(_controller)),
+                          Expanded(child: CameraPreview(_controller!)),
                           IconButton(
                             onPressed: _captureImage,
                             icon: Icon(Icons.camera),
