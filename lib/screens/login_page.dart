@@ -151,6 +151,20 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.pushNamed(context, '/home');
                       },
                       child: const Text("Login")),
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  height: 45,
+                  child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blueAccent[100],
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10))),
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/register');
+                      },
+                      child: const Text("New User ? Register")),
                 )
               ],
             ),

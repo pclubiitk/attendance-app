@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    const String initialRoute = "/register";
+    const String initialRoute = "/login";
     return GetMaterialApp(
       title: 'Attendance App',
       debugShowCheckedModeBanner: false,
