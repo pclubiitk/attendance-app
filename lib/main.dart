@@ -4,6 +4,7 @@ import 'package:attendance_app/screens/login_page.dart';
 import 'package:attendance_app/screens/attendace_history.dart';
 import 'package:attendance_app/screens/registration.dart';
 import 'package:attendance_app/screens/profile.dart';
+import 'package:attendance_app/screens/locationpage.dart';
 
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => const RegistrationPage(),
         '/picture': (context) => const CapturePicPage(),
         '/profile': (context) => const ProfileScreen(),
+        '/location': (context) => const LocationPage(),
       },
     );
   }
