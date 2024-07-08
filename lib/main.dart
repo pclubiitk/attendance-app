@@ -1,5 +1,6 @@
 import 'package:attendance_app/screens/dashboard.dart';
 import 'package:attendance_app/screens/capturepic.dart';
+import 'package:attendance_app/screens/locationpage.dart';
 import 'package:attendance_app/screens/login_page.dart';
 import 'package:attendance_app/screens/home_page.dart';
 import 'package:attendance_app/screens/registration.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const Dashboard(),
         '/register': (context) => const RegistrationPage(),
         '/picture': (context) => const CapturePicPage(),
+        '/location': (context) => const LocationPage(),
       },
     );
   }
