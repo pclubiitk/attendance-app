@@ -1,5 +1,6 @@
 import 'package:attendance_app/components/navbar_item.dart';
 import 'package:attendance_app/screens/login_page.dart';
+import 'package:attendance_app/screens/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
@@ -54,7 +55,15 @@ class DrawerItems extends StatelessWidget {
             NavbarItem(
               icon: LineAwesomeIcons.user,
               text: 'Profile',
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ProfileScreen()),
+                );
+              },
               textStyle: theme.textTheme.bodyLarge
                   ?.copyWith(color: theme.colorScheme.onSurface),
               iconColor: theme.iconTheme.color,
