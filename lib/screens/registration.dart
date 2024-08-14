@@ -20,7 +20,7 @@ class RegistrationPageState extends State<RegistrationPage> {
   final TextEditingController _employeeIdController = TextEditingController();
 
   void _nextPage() async {
-    //await Navigator.pushNamed(context, '/picture');
+    await Navigator.pushNamed(context, '/picture');
     Navigator.pushNamed(context, '/login');
     // if (_formKey.currentState?.validate() ?? false) {
     //   Navigator.of(context).push(

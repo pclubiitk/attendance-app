@@ -2,6 +2,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:attendance_app/screens/drawer.dart';
 import 'package:attendance_app/components/background_painter.dart';
+import 'package:attendance_app/components/calendar.dart';
+import 'package:get/get.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -49,18 +51,36 @@ class _DashboardState extends State<Dashboard> {
                         label: "Mark Attendance",
                         icon: Icons.calendar_month_outlined,
                         onTap: () {
-                          Navigator.pushNamed(context, '/history');
+                          Navigator.pushNamed(context, '/picture');
                         },
                       ),
-                      const SizedBox(width: 16.0),
+                      const SizedBox(width: 30.0),
                       ActionButtons(
                         label: "Provide Location",
                         icon: Icons.location_on,
                         onTap: () {
-                Navigator.pushNamed(context, '/location');   },
+                          Navigator.pushNamed(context, '/location');
+                        },
                       ),
                     ],
-                  )
+                  ),
+                  const SizedBox(height: 20.0),
+                  SizedBox(
+                    width: min(double.infinity, 400),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/history');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        elevation: 10.0,
+                      ),
+                      child: const Calendar(),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -94,7 +114,7 @@ class ProfileCard extends StatelessWidget {
           elevation: 10.0,
         ),
         onPressed: () {
-          // do something
+          Navigator.pushNamed(context, '/profile');
         },
         // padding: const EdgeInsets.all(4.0),
         child: Padding(

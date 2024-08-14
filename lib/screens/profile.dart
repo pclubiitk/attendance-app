@@ -16,221 +16,300 @@ class ProfileScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   title: Text("Profile"),
-      // ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Stack(
-              clipBehavior: Clip.none,
-              alignment: Alignment.center,
-              children: [
-                ClipPath(
-                  clipper: BackgroundWaveClipper(),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 320,
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(stops: [0.3,0.98],  colors: [Color(0xFF407BFE),Color.fromARGB(255, 123, 160, 253)])
-                    ),
-                  ),
-                ),
-                Positioned(
-                   top: bannerHeight/2.7,
-                   left: 10,
-                  child: CircleAvatar(
-                    radius: 21,
-                    backgroundColor: Colors.white,
-                    child: CircleAvatar(
-                      radius: 20,
-                      backgroundColor: Color(0xFF407BFE),
-                      child: IconButton(
-                          onPressed: (){Navigator.pop(context);}, 
-                          color:Colors.white,
-                          icon: Icon(LineAwesomeIcons.arrow_left_solid)),),
-                  )
-                        ),
-                Positioned(
-                  top: bannerHeight/2.6,
-                  child:  Text("Profile",
-                  style: GoogleFonts.lora(
-                    textStyle: TextStyle(
-                      color: Colors.white,
-                    fontSize: 26,
-                    fontWeight: FontWeight.w700
-                    )
-                  )
-                  )
-                  ),
-                // Container(
-                //   width: double.infinity,
-                //   height: bannerHeight,
-                //   decoration: const BoxDecoration(
-                //     color: Color.fromARGB(115, 0, 108, 255),
-                //     // borderRadius: BorderRadius.only(
-                //     //   bottomLeft: Radius.circular(100),
-                //     //   bottomRight: Radius.circular(100),
-                //     // ),
-                //   ),
-                //   // child: Image.asset(
-                //   //   "assets/Police car-rafiki.png",
-                //   //   fit: BoxFit.cover,
-                //   // ),
-
-                // ),
-                Positioned(
-                  top: bannerHeight,
-                  child: CircleAvatar(
-                    backgroundColor: const Color.fromARGB(255, 7, 114, 254),
-                    radius: bannerHeight / 2.5 + 3,
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      radius: bannerHeight / 2.5,
-                      backgroundImage: AssetImage("assets/messybun-pana.png"),
-                    ),
-                  ),
-                ),
+      appBar: AppBar(
+        title: Text("PROFILE"),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: [
+                Color(0xFF407BFE),
+                Color.fromARGB(255, 123, 160, 253),
               ],
             ),
-            SizedBox(height: bannerHeight / 8),
-            Padding(
-padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          ),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Stack(
+          clipBehavior: Clip.none,
+          // alignment: Alignment.center,
+          children: [
+            ClipPath(
+              clipper: BackgroundWaveClipper(),
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 38),
+                width: MediaQuery.of(context).size.width,
+                height: 220,
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(stops: [
+                  0.3,
+                  0.98
+                ], colors: [
+                  Color(0xFF407BFE),
+                  Color.fromARGB(255, 123, 160, 253)
+                ])),
+              ),
+            ),
+
+            // Positioned(
+            //     top: 0,
+            //     left: 10,
+            //     child: CircleAvatar(
+            //       radius: 21,
+            //       backgroundColor: Colors.white,
+            //       child: CircleAvatar(
+            //         radius: 20,
+            //         backgroundColor: Color(0xFF407BFE),
+            //         child: IconButton(
+            //             onPressed: () {
+            //               Navigator.pop(context);
+            //             },
+            //             color: Colors.white,
+            //             icon: Icon(LineAwesomeIcons.arrow_left_solid)),
+            //       ),
+            //     )),
+
+            // Positioned(
+            //     top: bannerHeight / 2.6,
+            //     child: Text("Profile",
+            //         style: GoogleFonts.lora(
+            //             textStyle: TextStyle(
+            //                 color: Colors.white,
+            //                 fontSize: 26,
+            //                 fontWeight: FontWeight.w700)))),
+
+            // Container(
+            //   width: double.infinity,
+            //   height: bannerHeight,
+            //   decoration: const BoxDecoration(
+            //     color: Color.fromARGB(115, 0, 108, 255),
+            //     // borderRadius: BorderRadius.only(
+            //     //   bottomLeft: Radius.circular(100),
+            //     //   bottomRight: Radius.circular(100),
+            //     // ),
+            //   ),
+            //   // child: Image.asset(
+            //   //   "assets/Police car-rafiki.png",
+            //   //   fit: BoxFit.cover,
+            //   // ),
+
+            // ),
+
+            Padding(
+              padding: const EdgeInsets.fromLTRB(20.0, 40.0, 20.0, 10.0),
+              child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
-                  // border: Border.all(
-                  //   width: .1,
-                  //   color:Colors.grey
-                  //   ),
-                  borderRadius: BorderRadius.circular(10),
-                  boxShadow: [
-                    BoxShadow(
-                      color: const Color.fromARGB(68, 117, 117, 117),
-    spreadRadius: 1,
-    blurRadius: 15
-                    )
-                  ]
-                ),
+                    color: Colors.white,
+                    border: Border.all(width: .1, color: Colors.grey),
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Color.fromARGB(137, 117, 117, 117),
+                          spreadRadius: 1,
+                          blurRadius: 15)
+                    ]),
                 child: Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start, // Align children to the start
                   children: [
-                    const Text("Employee ID",
-                        style: TextStyle(fontWeight: FontWeight.w700)),
-                    const SizedBox(
-                      height: 6,
-                    ),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black12,
-                        ),
-                        color: Colors.white,
-                        borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: const TextField(
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Employee ID',
-                          contentPadding: EdgeInsets.all(10),
+                    SizedBox(height: bannerHeight / 2.5),
+                    Positioned(
+                      top: bannerHeight * 0.8,
+                      child: CircleAvatar(
+                        backgroundColor: const Color.fromARGB(255, 7, 114, 254),
+                        radius: bannerHeight / 2.5 + 3,
+                        child: CircleAvatar(
+                          backgroundColor: Colors.white,
+                          radius: bannerHeight / 2.5,
+                          backgroundImage: AssetImage("assets/profileimg.png"),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    const Text("Full Name",
-                        style: TextStyle(fontWeight: FontWeight.w700)),
-                    const SizedBox(
-                      height: 6,
-                    ),
-                    Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black12,
-                        ),
-                        color: Colors.white,
-                        borderRadius: const BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: const TextField(
-                        readOnly: true,
-                        decoration: InputDecoration(
-                          border: InputBorder.none,
-                          hintText: 'Full Name',
-                          contentPadding: EdgeInsets.all(10),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                    const SizedBox(height: 5),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 38),
+                        // decoration: BoxDecoration(
+                        //   color: Colors.white,
+                        //   // border: Border.all(
+                        //   //   width: .1,
+                        //   //   color:Colors.grey
+                        //   //   ),
+                        //   borderRadius: BorderRadius.circular(10),
+                        //   // boxShadow: [
+                        //   //   BoxShadow(
+                        //   //       color: const Color.fromARGB(68, 117, 117, 117),
+                        //   //       spreadRadius: 1,
+                        //   //       blurRadius: 15)
+                        //   // ]
+                        // ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment
+                              .start, // Align children to the start
+                          children: [
+                            const Text("Employee ID",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14.0,
+                                    letterSpacing: 1.5)),
+                            // const SizedBox(
+                            //   height: 3,
+                            // ),
+                            Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                // border: Border.all(
+                                //   color: Colors.black12,
+                                // ),
+                                color: Colors.white,
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                              ),
+                              child: const TextField(
+                                readOnly: true,
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'SI-1998-9456UP',
+                                    hintStyle: TextStyle(
+                                      color: Colors.black87,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w700,
+                                    )
+                                    // contentPadding: EdgeInsets.all(),
+                                    ),
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            const Text(
+                              "Full Name",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 14.0,
+                                  letterSpacing: 1.5),
+                            ),
+                            // const SizedBox(
+                            //   height: 6,
+                            // ),
+                            Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                // border: Border.all(
+                                //   color: Colors.black12,
+                                // ),
+                                color: Colors.white,
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                              ),
+                              child: const TextField(
+                                readOnly: true,
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'RAM KRISHNA',
+                                    hintStyle: TextStyle(
+                                      color: Colors.black87,
+                                      fontSize: 20.0,
+                                      fontWeight: FontWeight.w700,
+                                    )
+                                    // contentPadding: EdgeInsets.all(10),
+                                    ),
+                              ),
+                            ),
+                            // const SizedBox(height: 20),
+                            Row(
                               children: [
-                                const Text("Age",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w700)),
-                                const SizedBox(
-                                  height: 6,
+                                Expanded(
+                                  flex: 1,
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Text(
+                                          "Age",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 14.0,
+                                              letterSpacing: 1.5),
+                                        ),
+                                        // const SizedBox(
+                                        //   height: 6,
+                                        // ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            // border: Border.all(
+                                            //   color: Colors.black12,
+                                            // ),
+                                            color: Colors.white,
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(10)),
+                                          ),
+                                          child: const TextField(
+                                            readOnly: true,
+                                            decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                hintText: '45',
+                                                hintStyle: TextStyle(
+                                                  color: Colors.black87,
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.w700,
+                                                )
+                                                // contentPadding:
+                                                //     EdgeInsets.all(10),
+                                                ),
+                                          ),
+                                        ),
+                                      ]),
                                 ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.black12,
-                                    ),
-                                    color: Colors.white,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(10)),
-                                  ),
-                                  child: const TextField(
-                                    readOnly: true,
-                                    decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Age',
-                                      contentPadding: EdgeInsets.all(10),
-                                    ),
-                                  ),
+                                const SizedBox(width: 15),
+                                Expanded(
+                                  flex: 2,
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        const Text(
+                                          "Position",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 14.0,
+                                              letterSpacing: 1.5),
+                                        ),
+                                        // const SizedBox(
+                                        //   height: 6,
+                                        // ),
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            // border: Border.all(
+                                            //   color: Colors.black12,
+                                            // ),
+                                            color: Colors.white,
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(10)),
+                                          ),
+                                          child: const TextField(
+                                            readOnly: true,
+                                            decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                hintText: 'SUB INSPECTOR',
+                                                hintStyle: TextStyle(
+                                                  color: Colors.black87,
+                                                  fontSize: 20.0,
+                                                  fontWeight: FontWeight.w700,
+                                                )
+                                                // contentPadding:
+                                                //     EdgeInsets.all(10),
+                                                ),
+                                          ),
+                                        ),
+                                      ]),
                                 ),
-                              ]),
+                              ],
+                            ),
+                          ],
                         ),
-                        const SizedBox(width: 15),
-                        Expanded(
-                          flex: 2,
-                          child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                const Text("Position",
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.w700)),
-                                const SizedBox(
-                                  height: 6,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                      color: Colors.black12,
-                                    ),
-                                    color: Colors.white,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(10)),
-                                  ),
-                                  child: const TextField(
-                                    readOnly: true,
-                                    decoration: InputDecoration(
-                                      border: InputBorder.none,
-                                      hintText: 'Position',
-                                      contentPadding: EdgeInsets.all(10),
-                                    ),
-                                  ),
-                                ),
-                              ]),
-                        ),
-                      ],
+                      ),
                     ),
                   ],
                 ),
@@ -238,6 +317,7 @@ padding: const EdgeInsets.symmetric(horizontal: 16.0),
             ),
           ],
         ),
+        // SizedBox(height: bannerHeight / 8),
       ),
     );
   }
