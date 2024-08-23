@@ -5,15 +5,15 @@ const prisma = new PrismaClient();
 async function createUser() {
   try {
     // create a new user
-    const user = await prisma.user.create({
+    const user = await prisma.users.create({
       data: {
         role: "ADMIN",
         Profile: {
           create: {
-            employeId: "124534",
-            name: "Manas Jain Kuniya",
+            employeId: "124",
+            name: "Akshat Gupta",
             position: "Inspector",
-            password: "!123456#",
+            password: "!12)))8*",
           },
         },
       },
@@ -26,5 +26,9 @@ async function createUser() {
     await prisma.$disconnect();
   }
 }
+
+// async function Login() {
+
+// }
 
 createUser();
