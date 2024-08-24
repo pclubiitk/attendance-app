@@ -1,13 +1,10 @@
-const { login, markAttendance, registerUser } =  require("../controllers/userController.js");
-const { authenticate } = require("../middlewares/authenticate.js");
-const { keyImageValidator } = require("../middlewares/inputValidation.js");
+const { createUser } = require("../controllers/userController");
 
-const express = require('express');
 
+const express = require("express");
 const router = express.Router();
 
-router.post("/login",login);
-router.post("/registerUser",keyImageValidator ,registerUser);
-router.post("/markAttendance",authenticate,markAttendance);
+router.post("/login", login);
+router.post("/createUser", createUser);
 
 module.exports = router;

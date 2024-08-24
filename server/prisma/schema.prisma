@@ -1,0 +1,70 @@
+// bunx prisma init --datasource-provider postgresql for seting up the prisma schema
+
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  // url = "postgresql://appadmin:ps1@localhost:5432/appdata?schema=public"
+}
+
+model location {
+  id           String      @id @default(cuid())
+  locationName String
+  xCoordinate  Float
+  yCoordinate  Float
+  Event        event?
+  Attendance   attendance?
+}
+
+model attendance {
+  id         String   @id @default(cuid())
+  location   location @relation(fields: [locationId], references: [id])
+  locationId String   @unique
+  user       users     @relation(fields: [userId], references: [id])
+  userId     String
+  time       DateTime
+}
+
+// show in the profile section
+model profile {
+  id        String @id @default(cuid())
+  employeId String @unique
+  name      String
+  position  String
+  password  String
+  user      users?
+}
+
+model users {
+  id         String       @id @default(cuid())
+  Profile    profile      @relation(fields: [profileId], references: [id])
+  profileId  String       @unique
+  role       role         @default(USER)
+  Attendance attendance[]
+  Event      event[]
+}
+
+model event {
+  id               String    @id @default(cuid()) // cuid is a unique id generator
+  title            String
+  description      String?
+  date             DateTime
+  location         location? @relation(fields: [locationId], references: [id])
+  locationId       String    @unique
+  assignedOfficers users[]
+}
+
+enum role {
+  ADMIN // 2
+  USER // 3
+  OBSERVER // 1
+}
