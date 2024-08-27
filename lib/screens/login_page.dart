@@ -77,7 +77,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Container(
                           alignment: Alignment.centerLeft,
                           child: TextField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintStyle: TextStyle(fontSize: 15),
                               hintText: "Enter User ID",
                               border: InputBorder.none,
@@ -111,7 +111,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Container(
                           alignment: Alignment.centerLeft,
                           child: TextField(
-                            decoration: InputDecoration(
+                            decoration: const InputDecoration(
                               hintStyle: TextStyle(fontSize: 15),
                               hintText: "Enter Password",
                               border: InputBorder.none,
@@ -139,14 +139,14 @@ class _LoginPageState extends State<LoginPage> {
                               borderRadius: BorderRadius.circular(10))),
                       onPressed: () {
                         Get.snackbar("Logged In", "Welcome Back {User}!",
-                            duration: Duration(seconds: 1),
+                            duration: const Duration(seconds: 1),
                             colorText: Colors.white,
                             backgroundColor: Colors.green);
                         Navigator.pushNamed(context, '/home');
                       },
                       child: const Text("Login")),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10.0,
                 ),
                 SizedBox(

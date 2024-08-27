@@ -1,19 +1,17 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:attendance_app/screens/drawer.dart';
-import 'package:attendance_app/screens/filter.dart';
 import 'package:attendance_app/components/background_painter.dart';
 import 'package:attendance_app/components/calendar.dart';
-import 'package:get/get.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+class Dashboard1 extends StatefulWidget {
+  const Dashboard1({super.key});
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  State<Dashboard1> createState() => _Dashboard1State();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _Dashboard1State extends State<Dashboard1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,13 +27,6 @@ class _DashboardState extends State<Dashboard> {
               Navigator.pop(context);
             },
           ),
-          IconButton(
-          onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => const SearchPage())),
-          icon: Icon(
-            Icons.search_rounded,
-            color: Theme.of(context).primaryColorDark,
-          )),
         ],
       ),
       drawer: const Drawer(child: DrawerItems()),
@@ -50,13 +41,13 @@ class _DashboardState extends State<Dashboard> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const ProfileCard(name: "Ram Krishna", role: "Sub Inspector"),
+                  const ProfileCard(name: "Ram Krishna", role: "Senior Officer"),
                   const SizedBox(height: 20.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ActionButtons(
-                        label: "Mark Attendance",
+                        label: "View Attendance",
                         icon: Icons.calendar_month_outlined,
                         onTap: () {
                           Navigator.pushNamed(context, '/picture');
@@ -64,7 +55,7 @@ class _DashboardState extends State<Dashboard> {
                       ),
                       const SizedBox(width: 30.0),
                       ActionButtons(
-                        label: "Provide Location",
+                        label: "View Location",
                         icon: Icons.location_on,
                         onTap: () {
                           Navigator.pushNamed(context, '/location');

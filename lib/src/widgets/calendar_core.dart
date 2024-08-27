@@ -34,7 +34,7 @@ class CalendarCore extends StatelessWidget {
   final _OnCalendarPageChanged onPageChanged;
 
   const CalendarCore({
-    Key? key,
+    super.key,
     this.dowBuilder,
     required this.dayBuilder,
     required this.onPageChanged,
@@ -57,8 +57,7 @@ class CalendarCore extends StatelessWidget {
     this.tableBorder,
     this.tablePadding,
     this.scrollPhysics,
-  })  : assert(!dowVisible || (dowHeight != null && dowBuilder != null)),
-        super(key: key);
+  })  : assert(!dowVisible || (dowHeight != null && dowBuilder != null));
 
   @override
   Widget build(BuildContext context) {

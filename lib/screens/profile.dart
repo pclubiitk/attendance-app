@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -17,7 +15,7 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text("PROFILE"),
+        title: const Text("PROFILE"),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -103,7 +101,7 @@ class ProfileScreen extends StatelessWidget {
                     color: Colors.white,
                     border: Border.all(width: .1, color: Colors.grey),
                     borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
+                    boxShadow: const [
                       BoxShadow(
                           color: Color.fromARGB(137, 117, 117, 117),
                           spreadRadius: 1,
@@ -120,7 +118,7 @@ class ProfileScreen extends StatelessWidget {
                         child: CircleAvatar(
                           backgroundColor: Colors.white,
                           radius: bannerHeight / 2.5,
-                          backgroundImage: AssetImage("assets/profileimg.png"),
+                          backgroundImage: const AssetImage("assets/profileimg.png"),
                         ),
                       ),
                     ),
@@ -158,13 +156,13 @@ class ProfileScreen extends StatelessWidget {
                             // ),
                             Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 // border: Border.all(
                                 //   color: Colors.black12,
                                 // ),
                                 color: Colors.white,
                                 borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
+                                    BorderRadius.all(Radius.circular(10)),
                               ),
                               child: const TextField(
                                 readOnly: true,
@@ -193,13 +191,13 @@ class ProfileScreen extends StatelessWidget {
                             // ),
                             Container(
                               width: double.infinity,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 // border: Border.all(
                                 //   color: Colors.black12,
                                 // ),
                                 color: Colors.white,
                                 borderRadius:
-                                    const BorderRadius.all(Radius.circular(10)),
+                                    BorderRadius.all(Radius.circular(10)),
                               ),
                               child: const TextField(
                                 readOnly: true,
@@ -235,13 +233,13 @@ class ProfileScreen extends StatelessWidget {
                                         //   height: 6,
                                         // ),
                                         Container(
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             // border: Border.all(
                                             //   color: Colors.black12,
                                             // ),
                                             color: Colors.white,
                                             borderRadius:
-                                                const BorderRadius.all(
+                                                BorderRadius.all(
                                                     Radius.circular(10)),
                                           ),
                                           child: const TextField(
@@ -279,13 +277,13 @@ class ProfileScreen extends StatelessWidget {
                                         //   height: 6,
                                         // ),
                                         Container(
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             // border: Border.all(
                                             //   color: Colors.black12,
                                             // ),
                                             color: Colors.white,
                                             borderRadius:
-                                                const BorderRadius.all(
+                                                BorderRadius.all(
                                                     Radius.circular(10)),
                                           ),
                                           child: const TextField(

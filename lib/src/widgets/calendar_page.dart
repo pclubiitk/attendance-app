@@ -17,7 +17,7 @@ class CalendarPage extends StatelessWidget {
   final double? dowHeight;
 
   const CalendarPage({
-    Key? key,
+    super.key,
     required this.visibleDays,
     this.dowBuilder,
     required this.dayBuilder,
@@ -30,8 +30,7 @@ class CalendarPage extends StatelessWidget {
     this.weekNumberVisible = false,
     this.dowHeight,
   })  : assert(!dowVisible || (dowHeight != null && dowBuilder != null)),
-        assert(!weekNumberVisible || weekNumberBuilder != null),
-        super(key: key);
+        assert(!weekNumberVisible || weekNumberBuilder != null);
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +64,7 @@ class CalendarPage extends StatelessWidget {
             .map((index) => Expanded(
                   child: weekNumberBuilder!(context, visibleDays[index]),
                 ))
-            .toList()
+            
       ],
     );
   }
