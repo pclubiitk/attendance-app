@@ -6,12 +6,12 @@ import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:simple_gesture_detector/simple_gesture_detector.dart';
+import 'package:attendance_app/src/shared/utils.dart';
 
 import 'customization/calendar_builders.dart';
 import 'customization/calendar_style.dart';
 import 'customization/days_of_week_style.dart';
 import 'customization/header_style.dart';
-import 'shared/utils.dart';
 import 'table_calendar_base.dart';
 import 'widgets/calendar_header.dart';
 import 'widgets/cell_content.dart';
@@ -206,7 +206,7 @@ class TableCalendar<T> extends StatefulWidget {
 
   /// Creates a `TableCalendar` widget.
   TableCalendar({
-    Key? key,
+    super.key,
     required DateTime focusedDay,
     required DateTime firstDay,
     required DateTime lastDay,
@@ -269,8 +269,7 @@ class TableCalendar<T> extends StatefulWidget {
         focusedDay = normalizeDate(focusedDay),
         firstDay = normalizeDate(firstDay),
         lastDay = normalizeDate(lastDay),
-        currentDay = currentDay ?? DateTime.now(),
-        super(key: key);
+        currentDay = currentDay ?? DateTime.now();
 
   @override
   _TableCalendarState<T> createState() => _TableCalendarState<T>();
@@ -515,8 +514,7 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
               Widget? cell = widget.calendarBuilders.weekNumberBuilder
                   ?.call(context, weekNumber);
 
-              if (cell == null) {
-                cell = Padding(
+              cell ??= Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 4),
                   child: Center(
                     child: Text(
@@ -525,7 +523,6 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
                     ),
                   ),
                 );
-              }
 
               return cell;
             },
@@ -616,7 +613,8 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
         }
 
         final isToday = isSameDay(day, widget.currentDay);
-        final isPresent = isPast(day, widget.currentDay);
+        final isPresent = is_Past(day, widget.currentDay);
+        final isAbsent = is_Absent(day);
         final isDisabled = _isDayDisabled(day);
         final isWeekend = _isWeekend(day, weekendDays: widget.weekendDays);
 
@@ -629,6 +627,7 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
           isTodayHighlighted: widget.calendarStyle.isTodayHighlighted,
           isToday: isToday,
           isPresent : isPresent,
+          isAbsent: isAbsent,
           isSelected: widget.selectedDayPredicate?.call(day) ?? false,
           isRangeStart: isRangeStart,
           isRangeEnd: isRangeEnd,
@@ -688,10 +687,10 @@ class _TableCalendarState<T> extends State<TableCalendar<T>> {
 
         return Stack(
           alignment: widget.calendarStyle.markersAlignment,
-          children: children,
           clipBehavior: widget.calendarStyle.canMarkersOverflow
               ? Clip.none
               : Clip.hardEdge,
+          children: children,
         );
       },
     );

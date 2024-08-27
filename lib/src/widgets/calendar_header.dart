@@ -23,7 +23,7 @@ class CalendarHeader extends StatelessWidget {
   final DayBuilder? headerTitleBuilder;
 
   const CalendarHeader({
-    Key? key,
+    super.key,
     this.locale,
     required this.focusedMonth,
     required this.calendarFormat,
@@ -35,7 +35,7 @@ class CalendarHeader extends StatelessWidget {
     required this.onFormatButtonTap,
     required this.availableCalendarFormats,
     this.headerTitleBuilder,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

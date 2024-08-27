@@ -56,6 +56,7 @@ class CalendarBuilders<T> {
   final FocusedDayBuilder? holidayBuilder;
 
   /// Custom builder for day cells that do not match any other builder.
+  final FocusedDayBuilder? defaultBuilder3;
   final FocusedDayBuilder? defaultBuilder2; //present days ; for now : days before today
   final FocusedDayBuilder? defaultBuilder;
 
@@ -96,6 +97,7 @@ class CalendarBuilders<T> {
     this.holidayBuilder,
     this.defaultBuilder,
     this.defaultBuilder2,
+    this.defaultBuilder3,
     this.rangeHighlightBuilder,
     this.singleMarkerBuilder,
     this.markerBuilder,

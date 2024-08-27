@@ -14,6 +14,7 @@ class CellContent extends StatelessWidget {
   final bool isTodayHighlighted;
   final bool isToday;
   final bool isPresent; //currently all days before today
+  final bool isAbsent;
   final bool isSelected;
   final bool isRangeStart;
   final bool isRangeEnd;
@@ -34,6 +35,7 @@ class CellContent extends StatelessWidget {
     required this.isTodayHighlighted,
     required this.isToday,
     required this.isPresent,
+    required this.isAbsent,
     required this.isSelected,
     required this.isRangeStart,
     required this.isRangeEnd,
@@ -67,7 +69,7 @@ class CellContent extends StatelessWidget {
     final margin = calendarStyle.cellMargin;
     final padding = calendarStyle.cellPadding;
     final alignment = calendarStyle.cellAlignment;
-    final duration = const Duration(milliseconds: 250);
+    const duration = Duration(milliseconds: 250);
 
     if (isDisabled) {
       cell = calendarBuilders.disabledBuilder?.call(context, day, focusedDay) ??
@@ -159,7 +161,7 @@ class CellContent extends StatelessWidget {
             padding: padding,
             decoration: isWeekend
                 ? calendarStyle.weekendDecoration
-                : calendarStyle.defaultDecoration2,
+                : (isAbsent? calendarStyle.defaultDecoration3 : calendarStyle.defaultDecoration2),
             alignment: alignment,
             child: Text(
               text,

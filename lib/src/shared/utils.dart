@@ -1,7 +1,9 @@
 // Copyright 2019 Aleksander Woźniak
 // SPDX-License-Identifier: Apache-2.0
 
+import 'package:attendance_app/src/shared/data.dart';
 import 'package:flutter/widgets.dart';
+// import 'package:attendance_app/src/shared/data.dart'
 
 /// Signature for a function that creates a widget for a given `day`.
 typedef DayBuilder = Widget? Function(BuildContext context, DateTime day);
@@ -53,16 +55,26 @@ bool isSameDay(DateTime? a, DateTime? b) {
   return a.year == b.year && a.month == b.month && a.day == b.day;
 }
 
- bool isPast(DateTime? a, DateTime? b) {
+bool is_Past(DateTime? a, DateTime? b) {
   if (a == null || b == null) {
     return false;
   }
-  if(a.year < b.year) return true;
-  else if(a.year == b.year){
-    if(a.month < b.month) return true;
-    else if(a.month == b.month){
+  if(a.year < b.year) {
+    return true;
+  } else if(a.year == b.year){
+    if(a.month < b.month) {
+      return true;
+    } else if(a.month == b.month){
       if(a.day < b.day) return true;
     }
   }
   return false;
+}
+
+bool is_Absent(DateTime? a) {
+  if (a == null) {
+    return false;
+  }
+  DateTime normalizedDate = normalizeDate(a);
+  return (attendanceManager.isAbsent(normalizedDate) == true);
 }

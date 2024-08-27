@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:attendance_app/screens/drawer.dart';
 import 'package:attendance_app/components/background_painter.dart';
 import 'package:attendance_app/components/calendar.dart';
-import 'package:get/get.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+class Dashboard1 extends StatefulWidget {
+  const Dashboard1({super.key});
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  State<Dashboard1> createState() => _Dashboard1State();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _Dashboard1State extends State<Dashboard1> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
