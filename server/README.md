@@ -19,4 +19,4 @@ follow https://bun.sh/guides/ecosystem/prisma
 
 install postgres, start the server and the 
 set the connection string in the 
-env variable DATABAE_URL
+env variable DATABASE_URL
