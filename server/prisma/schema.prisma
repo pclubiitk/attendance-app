@@ -16,54 +16,52 @@ datasource db {
   // url = "postgresql://appadmin:ps1@localhost:5432/appdata?schema=public"
 }
 
-model location {
-  id           String      @id @default(cuid())
+model Location {
+  id           Int    @id @default(autoincrement())
   locationName String
   xCoordinate  Float
   yCoordinate  Float
-  Event        event?
-  Attendance   attendance?
+  event        Event?
 }
 
-model attendance {
-  id         String   @id @default(cuid())
-  location   location @relation(fields: [locationId], references: [id])
-  locationId String   @unique
-  user       users     @relation(fields: [userId], references: [id])
-  userId     String
-  time       DateTime
+model Attendance {
+  id         Int      @id @default(autoincrement())
+  locationId Int
+  user       User     @relation(fields: [userId], references: [id])
+  userId     Int
+  time       DateTime @default(now())
 }
 
 // show in the profile section
-model profile {
-  id        String @id @default(cuid())
-  employeId String @unique
-  name      String
-  position  String
-  password  String
-  user      users?
+model Profile {
+  id         Int    @id @default(autoincrement())
+  employeeId Int    @unique
+  name       String
+  position   String
+  password   String
+  user       User   @relation(fields: [userId], references: [id])
+  userId     Int    @unique
 }
 
-model users {
-  id         String       @id @default(cuid())
-  Profile    profile      @relation(fields: [profileId], references: [id])
-  profileId  String       @unique
-  role       role         @default(USER)
-  Attendance attendance[]
-  Event      event[]
+model User {
+  id         Int          @id @default(autoincrement())
+  profile    Profile?
+  role       Role         @default(USER)
+  Attendance Attendance[]
+  Event      Event[]
 }
 
-model event {
-  id               String    @id @default(cuid()) // cuid is a unique id generator
+model Event {
+  id               Int       @id @default(autoincrement())
   title            String
   description      String?
-  date             DateTime
-  location         location? @relation(fields: [locationId], references: [id])
-  locationId       String    @unique
-  assignedOfficers users[]
+  date             DateTime  @default(now())
+  location         Location? @relation(fields: [locationId], references: [id])
+  locationId       Int       @unique
+  assignedOfficers User[]
 }
 
-enum role {
+enum Role {
   ADMIN // 2
   USER // 3
   OBSERVER // 1
