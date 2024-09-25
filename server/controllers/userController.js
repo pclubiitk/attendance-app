@@ -14,7 +14,10 @@ exports.registerUser = async (req, res) => {
     const salt = await bcrypt.genSalt(10);
     const hashed_password = await bcrypt.hash(password, salt);
     const user = await createUser(employeeId, name, position, hashed_password)
-    res.json({ msg: "User added" });
+    if(user)
+      res.json({ msg: "User added" });
+    else
+      res.status(400)
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
