@@ -48,7 +48,7 @@ model User {
   profile    Profile?
   role       Role         @default(USER)
   Attendance Attendance[]
-  Event      Event[]
+  events     Event[]      @relation("UserEvents")
 }
 
 model Event {
@@ -57,8 +57,11 @@ model Event {
   description      String?
   date             DateTime  @default(now())
   location         Location? @relation(fields: [locationId], references: [id])
-  locationId       Int       @unique
-  assignedOfficers User[]
+  locationId       Int?      @unique
+  assignedOfficers User[]    @relation("UserEvents")
+  subEvents        Event[]   @relation("subEvents")
+  parentEvent      Event?    @relation("subEvents", references: [id], fields: [parentEventId])
+  parentEventId    Int?
 }
 
 enum Role {

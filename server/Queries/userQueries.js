@@ -59,7 +59,6 @@ const getUser = async (employeeId) => {
 }
 
 module.exports = {
-  test: "HELLO",
   createUser,
   getUsers,
   getUser

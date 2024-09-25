@@ -11,11 +11,10 @@ app.use(cors({
   origin: true
 }));
 app.use(morgan('dev'));
-
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 app.use("/user",userRouter);
-// app.use("/event", eventRoutes)
+app.use("/event", eventRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server is running on ports ${PORT}`);
