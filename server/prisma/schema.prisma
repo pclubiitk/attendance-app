@@ -16,6 +16,9 @@ datasource db {
   // url = "postgresql://appadmin:ps1@localhost:5432/appdata?schema=public"
 }
 
+// TODO: we can directly mark the attendance from the ui, it will check if the user is in the radius of th loaction
+
+// TODO: I feel no need of the Location model
 model Location {
   id           Int    @id @default(autoincrement())
   locationName String
@@ -43,6 +46,7 @@ model Profile {
   userId     Int    @unique
 }
 
+// TODO: we can shift the role to the profile model
 model User {
   id         Int          @id @default(autoincrement())
   profile    Profile?
@@ -51,6 +55,7 @@ model User {
   events     Event[]      @relation("UserEvents")
 }
 
+// TODO: To fix dublicate event cretion, need somthing to stop it
 model Event {
   id               Int       @id @default(autoincrement())
   title            String
@@ -59,9 +64,10 @@ model Event {
   location         Location? @relation(fields: [locationId], references: [id])
   locationId       Int?      @unique
   assignedOfficers User[]    @relation("UserEvents")
+  // TODO: it's a one to many one relation int parentEvent, need one i think
   subEvents        Event[]   @relation("subEvents")
-  parentEvent      Event?    @relation("subEvents", references: [id], fields: [parentEventId])
-  parentEventId    Int?
+  parentEvent      Event     @relation("subEvents", references: [id], fields: [parentEventId])
+  parentEventId    Int
 }
 
 enum Role {
