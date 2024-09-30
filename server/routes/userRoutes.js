@@ -3,6 +3,7 @@ const {
   login,
   userEvents,
   getAttendance,
+  markAttendance,
 } = require("../controllers/userController");
 
 const express = require("express");
@@ -12,6 +13,6 @@ router.post("/register", registerUser);
 router.post("/login", login);
 router.post("/events", userEvents);
 router.post("/attendance", getAttendance);
-// router.post("/markattendance", markAttendance);
+router.post("/markattendance", markAttendance);
 
 module.exports = router;

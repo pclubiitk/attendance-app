@@ -1,9 +1,9 @@
 {
   "name": "attendance-app",
   "module": "app.js",
-  "type": "module",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "prisma": "^5.18.0"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
@@ -16,8 +16,7 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.4",
-    "morgan": "^1.10.0",
-    "prisma": "^5.18.0"
+    "morgan": "^1.10.0"
   },
   "prisma": {
     "schema": "prisma/schema.prisma"

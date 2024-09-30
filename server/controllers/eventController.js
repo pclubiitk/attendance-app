@@ -1,3 +1,5 @@
+const {getUserAttendanceById, getLocation } = require("../Queries/userQueries");
+
 const EventQueries = require("../Queries/eventQueries");
 
 const createEvent = async (req, res) => {
@@ -104,9 +106,44 @@ const deleteEvent = async (req, res) => {
   }
 };
 
+const getAllRecentEventAttendance = async(req, res) => {
+  console.log("Get All Recent Event Attendance got hit!")
+  try{
+      const eventId = req.body.event_id
+      const event = await EventQueries.getEvent(eventId)
+      if(event){
+          const usersID = event.event.assignedOfficers.map((officer) => officer.id)
+          if (usersID) {
+              const userLocations = []
+              await Promise.all(
+                  usersID.map(async (userID) => {
+                      const userAttendance = await getUserAttendanceById(userID);
+                      if (userAttendance) {
+                          // console.log("Running for user: ", userID, userAttendance[0]);
+                          if(userAttendance[0]){
+                              const location = await getLocation(userAttendance[0].locationId);
+                              userAttendance[0].location = location;
+                          }
+                          userLocations.push(userAttendance[0]); 
+                      } else {
+                          throw new Error("Error fetching User");
+                      }
+                  })
+              );
+              res.status(200).json({ userLocations });
+          }
+      }else{
+          throw new Error("Error fetching Event")
+      }
+
+  }catch(error){
+      res.status(500).json({error: error.message})
+  }
+}
 module.exports = {
   createEvent,
   createSubEvent,
   getAllEvents,
+  getAllRecentEventAttendance,
   deleteEvent,
 };
