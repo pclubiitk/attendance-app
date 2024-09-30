@@ -137,7 +137,15 @@ const getAllRecentEventAttendance = async(req, res) => {
       }
 
   }catch(error){
-      res.status(500).json({error: error.message})
+if (error.name === 'ValidationError') {
+  res.status(400).json({ error: 'Validation error', details: error.message });
+} else if (error.name === 'CastError') {
+  res.status(400).json({ error: 'Invalid ID format' });
+} else if (error.code === 11000) {
+  res.status(409).json({ error: 'Duplicate key error' });
+} else {
+  res.status(500).json({ error: 'Internal server error' });
+}
   }
 }
 module.exports = {
