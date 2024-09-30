@@ -6,14 +6,14 @@ import 'package:attendance_app/components/background_painter.dart';
 import 'package:attendance_app/components/calendar.dart';
 import 'package:get/get.dart';
 
-class Dashboard extends StatefulWidget {
-  const Dashboard({super.key});
+class userDashboard extends StatefulWidget {
+  const userDashboard({super.key});
 
   @override
-  State<Dashboard> createState() => _DashboardState();
+  State<userDashboard> createState() => _DashboardState();
 }
 
-class _DashboardState extends State<Dashboard> {
+class _DashboardState extends State<userDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
