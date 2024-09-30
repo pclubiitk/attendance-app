@@ -66,8 +66,8 @@ model Event {
   assignedOfficers User[]    @relation("UserEvents")
   // TODO: it's a one to many one relation int parentEvent, need one i think
   subEvents        Event[]   @relation("subEvents")
-  parentEvent      Event     @relation("subEvents", references: [id], fields: [parentEventId])
-  parentEventId    Int
+  parentEvent      Event?     @relation("subEvents", references: [id], fields: [parentEventId])
+  parentEventId    Int?
 }
 
 enum Role {

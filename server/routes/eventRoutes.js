@@ -8,6 +8,7 @@ const {
   createSubEvent,
   getAllEvents,
   deleteEvent,
+  getAllRecentEventAttendance,
 } = require("../controllers/eventController");
 
 const express = require("express");
@@ -32,5 +33,6 @@ router.delete(
   deleteEvent
 )
 router.get("/", authenticateToken, authenticateUserRole, getAllEvents);
+router.post("/getEventRecentAttandance", authenticateToken, authenticateUserRole,getAllRecentEventAttendance)
 
 module.exports = router;

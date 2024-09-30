@@ -71,32 +71,44 @@ const markAttendance = async (req, res) => {
     log,
     locationName,
   } = req.body;
-  console.log(req.body);
-  try {
-    await prisma.users.update({
-      where: {
-        id: id,
-      },
+ 
+  try{ 
+    if(!id || !lat || !log || !locationName){
+return res.status(400).json({
+  success: false,
+  error: {
+    code: 'MISSING_PARAMETERS',
+    message: 'Please provide all the required details: id, lat, log, and locationName'
+  }
+});
+    }
+    if(isNaN(parseFloat(lat)) || isNaN(parseFloat(log))){
+      return res.status(400).json({msg:"Invalid Coordinates"})
+    }
+    const location = await prisma.location.create({
       data: {
-        Attendance: {
-          // create new location and add it to attendance
-          create: {
-            time: currentdate,
-            location: {
-              // FIXME: IT DONT WORK WITH connectOrCreate but works
-              // FIXME: with Create.
-              connectOrCreate: {
-                locationName: locationName,
-                xCoordinate: parseFloat(lat),
-                yCoordinate: parseFloat(log),
-              },
-            },
-          },
-        },
+        locationName: locationName,
+        xCoordinate: parseFloat(lat),
+        yCoordinate: parseFloat(log),
       },
     });
+
+    if (!location) {
+      return res.status(500).json({ msg: "Error in creating location" });
+    }
+    const attendance = await prisma.attendance.create({
+      data: {
+        time: currentdate,
+        locationId: location.id,
+        userId: id,
+      },
+    });
+    if (!attendance) {
+      return res.status(500).json({ msg: "Error in marking attendance" });
+    }
     res.status(200).send("Marked Attendance!");
-  } catch (err) {
+  }
+  catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
@@ -141,8 +153,8 @@ const getAttendance = async (req, res) => {
 module.exports = {
   registerUser,
   login,
-  // markAttendance,
+  markAttendance,
   userEvents,
   getAttendance,
-  
+
 };

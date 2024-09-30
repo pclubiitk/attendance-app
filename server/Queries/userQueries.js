@@ -114,10 +114,42 @@ const getUserEvents = async (employeeId) => {
   }
 };
 
+const getUserAttendanceById = async (id) => {
+  try {
+    const attendance = await prisma.attendance.findMany({
+      where: {
+        userId: id
+      },
+      orderBy: {
+        id: 'desc'
+      }
+    });
+    return attendance;
+  } catch (error) {
+    // console.log(error);
+    return null;
+  }
+};
+
+const getLocation = async(locationId) => {
+  try{
+    const location = await prisma.location.findUnique({
+      where: {
+        id: locationId
+      }
+    });
+    return location;
+  }catch(error){
+    // console.log(error);
+    return null;
+  }
+}
 module.exports = {
   createUser,
   getUsers,
   getUser,
   getUserEvents,
   getUserAttendance,
+  getUserAttendanceById,
+  getLocation
 };
