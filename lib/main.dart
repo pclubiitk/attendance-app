@@ -1,6 +1,6 @@
-import 'package:attendance_app/screens/dashboard.dart';
+import 'package:attendance_app/screens/userdashboard.dart';
+import 'package:attendance_app/screens/adminDashboard.dart';
 import 'package:attendance_app/screens/capturepic.dart';
-
 import 'package:attendance_app/screens/login_page.dart';
 import 'package:attendance_app/screens/attendace_history.dart';
 import 'package:attendance_app/screens/registration.dart';
@@ -37,11 +37,13 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => const LoginPage(),
         '/history': (context) => const History(),
-        '/home': (context) => const Dashboard(),
+        '/userDashboard': (context) => const userDashboard(),
+        '/adminDashboard': (context) => const adminDashboard(),
         '/register': (context) => const RegistrationPage(),
         '/picture': (context) => const CapturePicPage(),
         '/profile': (context) => const ProfileScreen(),
         '/location': (context) => const LocationPage(),
+        
         
       },
     );
