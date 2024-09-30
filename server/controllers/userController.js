@@ -74,7 +74,13 @@ const markAttendance = async (req, res) => {
  
   try{ 
     if(!id || !lat || !log || !locationName){
-      return res.status(400).json({msg:"Please provide all the details"})
+return res.status(400).json({
+  success: false,
+  error: {
+    code: 'MISSING_PARAMETERS',
+    message: 'Please provide all the required details: id, lat, log, and locationName'
+  }
+});
     }
     if(isNaN(parseFloat(lat)) || isNaN(parseFloat(log))){
       return res.status(400).json({msg:"Invalid Coordinates"})
