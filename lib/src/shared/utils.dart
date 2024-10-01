@@ -81,8 +81,13 @@ bool is_Absent(DateTime? a) {
 class Event {
   final String title;
   final String location;
-  // final int x,y; // To Do : make this as per the desired Event struct.
-  const Event(this.title, this.location);
+  // final int x,y; 
+    // To Do : add new attributes to make this as per the desired Event struct.
+
+  const Event({
+    required this.title,
+    required this.location,
+  });
 
   @override
   String toString() => title;
