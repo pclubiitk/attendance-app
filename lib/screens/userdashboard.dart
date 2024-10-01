@@ -4,7 +4,7 @@ import 'package:attendance_app/screens/drawer.dart';
 import 'package:attendance_app/screens/filter.dart';
 import 'package:attendance_app/components/background_painter.dart';
 import 'package:attendance_app/components/calendar.dart';
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
 class userDashboard extends StatefulWidget {
   const userDashboard({super.key});
@@ -77,7 +77,7 @@ class _DashboardState extends State<userDashboard> {
                     width: min(double.infinity, 400),
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/history');
+                        Navigator.pushNamed(context, '/usereventpage');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,

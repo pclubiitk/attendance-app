@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import 'package:flutter/widgets.dart';
-import 'package:table_calendar/table_calendar.dart';
+import 'package:attendance_app/table_calendar.dart';
 
 /// Class containing styling and configuration for `TableCalendar`'s content.
 class CalendarStyle {
