@@ -1,6 +1,6 @@
 import 'package:attendance_app/components/navbar_item.dart';
 import 'package:attendance_app/screens/login_page.dart';
-import 'package:attendance_app/screens/profile.dart';
+// import 'package:attendance_app/screens/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
@@ -24,7 +24,7 @@ class DrawerItems extends StatelessWidget {
           Container(
             alignment: Alignment.centerRight,
             child: IconButton(
-              icon: Icon(IconData(0xe16a, fontFamily: 'MaterialIcons')),
+              icon: const Icon(IconData(0xe16a, fontFamily: 'MaterialIcons')),
               onPressed: () {
                 Navigator.pop(context);
               },
@@ -34,7 +34,7 @@ class DrawerItems extends StatelessWidget {
             width: 150,
             height: 150,
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 253, 255, 255),
+              color: const Color.fromARGB(255, 253, 255, 255),
               shape: BoxShape.circle,
               border: Border.all(
                 width: 1,
@@ -48,7 +48,7 @@ class DrawerItems extends StatelessWidget {
               // width: double.infinity,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           NavbarItem(
@@ -70,9 +70,9 @@ class DrawerItems extends StatelessWidget {
           ),
           NavbarItem(
             icon: LineAwesomeIcons.history_solid,
-            text: 'Attendance History',
+            text: 'Event History',
             onTap: () {
-              Navigator.pushNamed(context, '/history');
+              Navigator.pushNamed(context, '/usereventpage');
             },
             textStyle: theme.textTheme.bodyLarge
                 ?.copyWith(color: theme.colorScheme.onSurface),

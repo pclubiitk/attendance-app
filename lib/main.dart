@@ -1,8 +1,9 @@
 import 'package:attendance_app/screens/userdashboard.dart';
 import 'package:attendance_app/screens/adminDashboard.dart';
+import 'package:attendance_app/screens/user_events.dart';
 import 'package:attendance_app/screens/capturepic.dart';
 import 'package:attendance_app/screens/login_page.dart';
-import 'package:attendance_app/screens/attendace_history.dart';
+// import 'package:attendance_app/screens/attendace_history.dart';
 import 'package:attendance_app/screens/registration.dart';
 import 'package:attendance_app/screens/profile.dart';
 import 'package:attendance_app/screens/locationpage.dart';
@@ -36,9 +37,10 @@ class MyApp extends StatelessWidget {
       initialRoute: initialRoute,
       routes: {
         '/login': (context) => const LoginPage(),
-        '/history': (context) => const History(),
+        // '/history': (context) => const History(), // made it as user event page
         '/userDashboard': (context) => const userDashboard(),
         '/adminDashboard': (context) => const adminDashboard(),
+        '/usereventpage': (context) => const userEvents(),
         '/register': (context) => const RegistrationPage(),
         '/picture': (context) => const CapturePicPage(),
         '/profile': (context) => const ProfileScreen(),
