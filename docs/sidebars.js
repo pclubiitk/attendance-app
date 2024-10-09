@@ -29,14 +29,8 @@ const sidebars = {
       type: 'category',
       label: 'Facial Recognition Model',
       items: [
-        'ml/face_recognition/intro'
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Anti Spoofing Model',
-      items: [
-        'ml/anti_spoofing/intro'
+        'ml/face_recognition/intro',
+        'ml/face_recognition/contribute'
       ],
     },
   ],
