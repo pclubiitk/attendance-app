@@ -5,7 +5,7 @@ import 'package:latlong2/latlong.dart';
 class LocationMap extends StatelessWidget {
   final List<LatLng> locations;
 
-  const LocationMap({Key? key, required this.locations}) : super(key: key);
+  const LocationMap({super.key, required this.locations});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class LocationMap extends StatelessWidget {
     // or a default location if `_locations` is empty.
     LatLng initialCenter = locations.isNotEmpty
         ? locations.first
-        : LatLng(28.6139, 77.2090); // Default center (Delhi, India)
+        : const LatLng(28.6139, 77.2090); // Default center (Delhi, India)
 
     return FlutterMap(
        options:  MapOptions(

@@ -10,7 +10,7 @@ class AttendanceManager {
     _attendance[normalizeDate(date)] = isPresent;
   }
 
-  // Function to update attendance for multiple dates
+  // Function to set/update attendance for multiple dates
   void updateAttendance(Map<DateTime, bool> attendanceUpdates) {
     attendanceUpdates.forEach((date, isPresent) {
       _attendance[normalizeDate(date)] = isPresent;
@@ -19,7 +19,7 @@ class AttendanceManager {
 
   // Function to get attendance for a specific date
   bool? getAttendance(DateTime date) {
-    return _attendance[normalizeDate(date)];
+    return _attendance[normalizeDate(date)] == true;
   }
 
   // Function to check if a date is absent
@@ -33,10 +33,10 @@ class AttendanceManager {
   }
 }
 
-
+// super important infrastructure
 AttendanceManager attendanceManager = AttendanceManager();
 
-void fillData() {
+void fillData() { //dummy data
   // Example of setting attendance for a specific date
   attendanceManager.setAttendance(DateTime(2024, 8, 15), false);
   attendanceManager.setAttendance(DateTime(2024, 8, 16), true);
