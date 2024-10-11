@@ -1,5 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 
+// TODO: write error handling for the database downtime
 const prisma = new PrismaClient();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -23,7 +24,7 @@ const registerUser = async (req, res) => {
     });
     console.log("User Registered");
   } catch (err) {
-    res.status(500).send("Server Error");
+    res.status(500).json({ msg: "Server Error" });
   }
 };
 // login user
@@ -44,12 +45,19 @@ const login = async (req, res) => {
     // payload
     const payload = {
       user: {
+        // TODO: include the profile pic url field
         userId: user.profile.employeeId,
         role: user.role,
+        name: user.profile.name,
+        position: user.profile.position,
       },
     };
+    // Options for JWT, including expiry time
+    const options = {
+      expiresIn: "7d", // Token expires in 7 days
+    };
     // Sign the token
-    const token = jwt.sign(payload, process.env.JWT_SECRET);
+    const token = jwt.sign(payload, process.env.JWT_SECRET, options);
     const literal = "Bearer ".concat(token);
     // send the token
     res.json({
@@ -58,7 +66,7 @@ const login = async (req, res) => {
     });
   } catch (err) {
     console.error(err.message);
-    res.status(500).send("Server Error");
+    res.status(500).json({ msg: "Invalid Password" });
   }
 };
 // TODO:
@@ -71,19 +79,20 @@ const markAttendance = async (req, res) => {
     log,
     locationName,
   } = req.body;
- 
-  try{ 
-    if(!id || !lat || !log || !locationName){
-return res.status(400).json({
-  success: false,
-  error: {
-    code: 'MISSING_PARAMETERS',
-    message: 'Please provide all the required details: id, lat, log, and locationName'
-  }
-});
+
+  try {
+    if (!id || !lat || !log || !locationName) {
+      return res.status(400).json({
+        success: false,
+        error: {
+          code: "MISSING_PARAMETERS",
+          message:
+            "Please provide all the required details: id, lat, log, and locationName",
+        },
+      });
     }
-    if(isNaN(parseFloat(lat)) || isNaN(parseFloat(log))){
-      return res.status(400).json({msg:"Invalid Coordinates"})
+    if (isNaN(parseFloat(lat)) || isNaN(parseFloat(log))) {
+      return res.status(400).json({ msg: "Invalid Coordinates" });
     }
     const location = await prisma.location.create({
       data: {
@@ -107,8 +116,7 @@ return res.status(400).json({
       return res.status(500).json({ msg: "Error in marking attendance" });
     }
     res.status(200).send("Marked Attendance!");
-  }
-  catch (err) {
+  } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
@@ -118,7 +126,8 @@ return res.status(400).json({
 const userEvents = async (req, res) => {
   console.log("Get All Events got hit!");
   try {
-    const { employeeId } = req.body;
+    // const { employeeId } = req.body;
+    const employeeId = req.userId;
     const { error, events } = await getUserEvents(employeeId);
     if (error) {
       return res.status(error.code).json({ msg: error.msg });
@@ -126,7 +135,7 @@ const userEvents = async (req, res) => {
     res.status(200).json({ events });
   } catch (err) {
     console.error(err.message);
-    res.status(400).send("Bad Request");
+    res.status(400).json({ msg: "Bad Request" });
   }
 };
 
@@ -142,7 +151,7 @@ const getAttendance = async (req, res) => {
     res.status(200).json({ Attendance: user.Attendance });
   } catch {
     console.error(err.message);
-    res.status(400).send("Bad Request");
+    res.status(400).json({ msg: "Bad Request" });
   }
 };
 
@@ -156,5 +165,4 @@ module.exports = {
   markAttendance,
   userEvents,
   getAttendance,
-
 };

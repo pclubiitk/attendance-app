@@ -1,6 +1,5 @@
 import 'package:attendance_app/components/navbar_item.dart';
-import 'package:attendance_app/screens/login_page.dart';
-// import 'package:attendance_app/screens/profile.dart';
+import 'package:attendance_app/services/logout.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
@@ -55,13 +54,6 @@ class DrawerItems extends StatelessWidget {
             icon: LineAwesomeIcons.user,
             text: 'Profile',
             onTap: () {
-              // Navigator.pop(context);
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //       builder: (context) =>
-              //           ProfileScreen()), // replace ProfileScreen with your destination widget
-              // );
               Navigator.pushNamed(context, '/profile');
             },
             textStyle: theme.textTheme.bodyLarge
@@ -90,13 +82,8 @@ class DrawerItems extends StatelessWidget {
           NavbarItem(
             icon: Icons.login_sharp,
             text: 'Log Out',
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const LoginPage(),
-                ),
-              );
+            onTap: () async {
+              await LogoutService().logoutAndNavigateToLogin(context);
             },
             textStyle: theme.textTheme.bodyLarge
                 ?.copyWith(color: theme.colorScheme.onSurface),

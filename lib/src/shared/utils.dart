@@ -100,11 +100,11 @@ final kEvents = LinkedHashMap<DateTime, List<Event>>(
 
 // dummy data generator
 final _kEventSource = { for (var item in List.generate(50, (index) => index)) DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5) : List.generate(
-        item % 4 + 1, (index) => Event('Event $item | ${index + 1}' , 'Sample Location')) }
+        item % 4 + 1, (index) => Event(title: 'Event $item | ${index + 1}' , location: 'Sample Location')) }
   ..addAll({
     kToday: [
-      const Event('SnT Code :<' , 'OAT'),
-      const Event('Finishing Party ~yash' , 'Mama Mio :)'),
+      const Event(title: 'SnT Code :<', location: 'OAT'),
+      const Event(title: 'Finishing Party ~yash' , location: 'Mama Mio :)'),
     ],
   });
 
