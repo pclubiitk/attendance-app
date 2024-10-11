@@ -10,9 +10,9 @@ void main(){
       ),
     );
 
-    // username input
-    await tester.enterText(find.byKey(const Key('Test1')), 'testuser');
-    expect(find.text('testuser'), findsOneWidget);
+    // username input, integer
+    await tester.enterText(find.byKey(const Key('Test1')),'230626');
+    expect(find.text('230626'), findsOneWidget);
 
     // password input
     await tester.enterText(find.byKey(const Key('Test2')), 'password123');

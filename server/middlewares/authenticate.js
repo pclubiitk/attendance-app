@@ -2,6 +2,7 @@ const { getUser } = require("../Queries/userQueries");
 
 const jwt = require("jsonwebtoken");
 
+// Need to add time limit or expiry time for token
 exports.authenticateToken = (req, res, next) => {
   console.log("authenticate middleware got hit");
   const authHeader = req.headers["authorization"];
@@ -15,6 +16,9 @@ exports.authenticateToken = (req, res, next) => {
     req.userId = decoded.user.userId;
     next();
   } catch (err) {
+    if (err.name === "TokenExpiredError") {
+      return res.status(401).json({ message: "Token expired" });
+    }
     res
       .status(401)
       .json({ message: "Verification failed, token is not valid" });

@@ -4,7 +4,6 @@ const EventQueries = require("../Queries/eventQueries");
 
 const createEvent = async (req, res) => {
   try {
-    // FIXME: destructuring as array why? what do you expect in input?
     const { title, description, date, locationName, xCoordinate, yCoordinate } =
       req.body;
     console.log(title);
@@ -40,7 +39,6 @@ const createEvent = async (req, res) => {
 // TODO: as if the error occurs in between, the event is created but can never be used
 const createSubEvent = async (req, res) => {
   try {
-    // FIXME: Why array?
     const { title, description, date, locationName, xCoordinate, yCoordinate } =
       req.body;
     const location = {
