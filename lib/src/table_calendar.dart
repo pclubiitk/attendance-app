@@ -35,6 +35,8 @@ class TableCalendar<T> extends StatefulWidget {
   /// If nothing is provided, a default locale will be used.
   final dynamic locale;
 
+  final Key? keyy;
+
   /// The start of the selected day range.
   final DateTime? rangeStartDay;
 
@@ -259,7 +261,7 @@ class TableCalendar<T> extends StatefulWidget {
     this.onHeaderLongPressed,
     this.onPageChanged,
     this.onFormatChanged,
-    this.onCalendarCreated,
+    this.onCalendarCreated, this.keyy,
   })  : assert(availableCalendarFormats.keys.contains(calendarFormat)),
         assert(availableCalendarFormats.length <= CalendarFormat.values.length),
         assert(weekendDays.isNotEmpty

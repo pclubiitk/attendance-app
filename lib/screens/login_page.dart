@@ -11,6 +11,11 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+const test1 = Key('Test1');
+const test2 = Key('Test2');
+const test3 = Key('Test3');
+const test4 = Key('Test4');
+
 class _LoginPageState extends State<LoginPage> {
   var size, height, width;
   TextEditingController userIdController = TextEditingController();
@@ -78,6 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Expanded(
                         child: Container(
+                          key: test1,
                           alignment: Alignment.centerLeft,
                           child: TextField(
                             decoration: const InputDecoration(
@@ -113,6 +119,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       Expanded(
                         child: Container(
+                          key: test2,
                           alignment: Alignment.centerLeft,
                           child: TextField(
                             decoration: const InputDecoration(
@@ -134,6 +141,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: height / 20,
                 ),
                 SizedBox(
+                  key: test3,
                   width: double.infinity,
                   height: 45,
                   child: ElevatedButton(
@@ -156,6 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                   height: 10.0,
                 ),
                 SizedBox(
+                  key: test4,
                   width: double.infinity,
                   height: 45,
                   child: ElevatedButton(
@@ -199,7 +208,7 @@ class _LoginPageState extends State<LoginPage> {
         }),
       );
 
-      if (response.statusCode == 200) {
+      if (response.statusCode == 200) {  
         final responseData = jsonDecode(response.body);
         String token = responseData['token'];
 
@@ -211,7 +220,7 @@ class _LoginPageState extends State<LoginPage> {
       }
     } catch (e) {
       Get.snackbar("Error", "An error occurred during login",
-          colorText: Colors.white, backgroundColor: Colors.red);
+          colorText: Colors.white, backgroundColor: Color.fromARGB(255, 244, 130, 54));
     }
   }
 
