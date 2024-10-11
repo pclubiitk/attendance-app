@@ -58,13 +58,13 @@ bool is_Past(DateTime? a, DateTime? b) {
   if (a == null || b == null) {
     return false;
   }
-  if(a.year < b.year) {
+  if (a.year < b.year) {
     return true;
-  } else if(a.year == b.year){
-    if(a.month < b.month) {
+  } else if (a.year == b.year) {
+    if (a.month < b.month) {
       return true;
-    } else if(a.month == b.month){
-      if(a.day < b.day) return true;
+    } else if (a.month == b.month) {
+      if (a.day < b.day) return true;
     }
   }
   return false;
@@ -81,8 +81,8 @@ bool is_Absent(DateTime? a) {
 class Event {
   final String title;
   final String location;
-  // final int x,y; 
-    // To Do : add new attributes to make this as per the desired Event struct.
+  // final int x,y;
+  // To Do : add new attributes to make this as per the desired Event struct.
 
   const Event(
     this.title,
@@ -99,12 +99,15 @@ final kEvents = LinkedHashMap<DateTime, List<Event>>(
 )..addAll(_kEventSource);
 
 // dummy data generator
-final _kEventSource = { for (var item in List.generate(50, (index) => index)) DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5) : List.generate(
-        item % 4 + 1, (index) => Event('Event $item | ${index + 1}' , 'Sample Location')) }
-  ..addAll({
+final _kEventSource = {
+  for (var item in List.generate(50, (index) => index))
+    DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5): List.generate(
+        item % 4 + 1,
+        (index) => Event('Event $item | ${index + 1}', 'Sample Location'))
+}..addAll({
     kToday: [
-      const Event('SnT Code :<' , 'OAT'),
-      const Event('Finishing Party ~yash' , 'Mama Mio :)'),
+      const Event('SnT Code :<', 'OAT'),
+      const Event('Finishing Party ~yash', 'Mama Mio :)'),
     ],
   });
 

@@ -1,19 +1,23 @@
 import 'dart:math';
+import 'package:attendance_app/components/profile_card.dart';
+import 'package:attendance_app/services/logout.dart';
+import 'package:attendance_app/services/store.dart';
 import 'package:flutter/material.dart';
-import 'package:attendance_app/screens/drawer.dart';
+import 'package:attendance_app/components/drawer.dart';
 import 'package:attendance_app/screens/filter.dart';
 import 'package:attendance_app/components/background_painter.dart';
 import 'package:attendance_app/components/calendar.dart';
-// import 'package:get/get.dart';
 
-class userDashboard extends StatefulWidget {
-  const userDashboard({super.key});
 
+class UserDashboard extends StatefulWidget {
+  const UserDashboard({super.key});
   @override
-  State<userDashboard> createState() => _DashboardState();
+  State<UserDashboard> createState() => _DashboardState();
 }
 
-class _DashboardState extends State<userDashboard> {
+class _DashboardState extends State<UserDashboard> {
+  final TokenService _tokenService = TokenService();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,18 +28,20 @@ class _DashboardState extends State<userDashboard> {
           IconButton(
             icon: const Icon(Icons.logout),
             tooltip: 'Logout',
-            onPressed: () {
-              // logoutlogic
-              Navigator.pop(context);
+            onPressed: () async {
+              await LogoutService().logoutAndNavigateToLogin(context);
+              // // logoutlogic
+              // _tokenService.deleteToken();
+              // Navigator.pushNamed(context, '/login');
             },
           ),
           IconButton(
-          onPressed: () => Navigator.of(context)
-              .push(MaterialPageRoute(builder: (_) => const SearchPage())),
-          icon: Icon(
-            Icons.search_rounded,
-            color: Theme.of(context).primaryColorDark,
-          )),
+              onPressed: () => Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (_) => const SearchPage())),
+              icon: Icon(
+                Icons.search_rounded,
+                color: Theme.of(context).primaryColorDark,
+              )),
         ],
       ),
       drawer: const Drawer(child: DrawerItems()),
@@ -50,7 +56,7 @@ class _DashboardState extends State<userDashboard> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  const ProfileCard(name: "Ram Krishna", role: "Sub Inspector"),
+                  ProfileCard(),
                   const SizedBox(height: 20.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -94,66 +100,6 @@ class _DashboardState extends State<userDashboard> {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class ProfileCard extends StatelessWidget {
-  const ProfileCard({
-    super.key,
-    required this.name,
-    required this.role,
-  });
-
-  final String name;
-  final String role;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: min(double.infinity, 400),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.white,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(10.0),
-          ),
-          elevation: 10.0,
-        ),
-        onPressed: () {
-          Navigator.pushNamed(context, '/profile');
-        },
-        // padding: const EdgeInsets.all(4.0),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 8.0),
-              const CircleAvatar(
-                radius: 50.0,
-                backgroundImage: AssetImage('assets/profileimg.png'),
-              ),
-              const SizedBox(height: 8.0),
-              Text(
-                name,
-                style: const TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              Text(
-                role,
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Colors.grey[800],
-                  letterSpacing: 2.0,
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
