@@ -84,10 +84,10 @@ class Event {
   // final int x,y; 
     // To Do : add new attributes to make this as per the desired Event struct.
 
-  const Event({
-    required this.title,
-    required this.location,
-  });
+  const Event(
+    this.title,
+    this.location,
+  );
 
   @override
   String toString() => title;

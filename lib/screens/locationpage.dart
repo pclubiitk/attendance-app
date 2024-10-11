@@ -13,7 +13,7 @@ class LocationPage extends StatefulWidget {
 
 class _LocationPageState extends State<LocationPage> {
   Position? _currentPosition;
-  List<LatLng> _locations = [];
+  final List<LatLng> _locations = [];
   bool _fetchingLocation = false;
 
   @override
@@ -29,10 +29,10 @@ class _LocationPageState extends State<LocationPage> {
           FloatingActionButton(
             onPressed: _fetchingLocation ? null : _getCurrentLocation, // Disable button while fetching
             child: _fetchingLocation
-                ? Column(
+                ? const Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const CircularProgressIndicator(),
+                      CircularProgressIndicator(),
                     ],
                   )
                 : const Icon(Icons.location_on),

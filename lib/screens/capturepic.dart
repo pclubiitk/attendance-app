@@ -30,7 +30,7 @@ class CapturePicPageState extends State<CapturePicPage> {
         Get.snackbar(
           "Error",
           "No valid Camera Detected",
-          duration: Duration(seconds: 1),
+          duration: const Duration(seconds: 1),
           colorText: Colors.white,
           backgroundColor: Colors.red,
         );
@@ -145,7 +145,7 @@ class CapturePicPageState extends State<CapturePicPage> {
                           Expanded(child: CameraPreview(_controller!)),
                           IconButton(
                             onPressed: _captureImage,
-                            icon: Icon(Icons.camera),
+                            icon: const Icon(Icons.camera),
                             iconSize: 50,
                             color: Colors.black,
                           ),

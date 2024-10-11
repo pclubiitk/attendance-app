@@ -9,6 +9,9 @@ class userEvents extends StatefulWidget {
   _userEventsState createState() => _userEventsState();
 }
 
+const Key calendarKey = Key('Calendar'); 
+const Key eventKey = Key('Events'); //key in internal code of Calendar just before event card generation
+
 class _userEventsState extends State<userEvents> {
 
   late final ValueNotifier<List<Event>> _selectedEvents;
@@ -91,6 +94,7 @@ class _userEventsState extends State<userEvents> {
       body: Column(
         children: [
           TableCalendar<Event>(
+            key: calendarKey,
             firstDay: kFirstDay,
             lastDay: kLastDay,
             focusedDay: _focusedDay,
@@ -101,7 +105,7 @@ class _userEventsState extends State<userEvents> {
             rangeSelectionMode: _rangeSelectionMode,
             eventLoader: _getEventsForDay,
             startingDayOfWeek: StartingDayOfWeek.monday,
-            calendarStyle: CalendarStyle(
+            calendarStyle: const CalendarStyle(
               // Use `CalendarStyle` to customize the UI
               outsideDaysVisible: false,
             ),
@@ -120,6 +124,7 @@ class _userEventsState extends State<userEvents> {
           ),
           const SizedBox(height: 8.0),
           Expanded(
+            key: eventKey,
             child: ValueListenableBuilder<List<Event>>(
               valueListenable: _selectedEvents,
               builder: (context, value, _) {
