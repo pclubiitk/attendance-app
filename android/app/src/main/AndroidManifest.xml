@@ -1,7 +1,7 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.pclub.attendance">
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <application
-        android:label="attendance_app"
+        android:label="Attendance App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "788037853247",
+    "project_id": "attendance-338eb",
+    "storage_bucket": "attendance-338eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788037853247:android:c1e473148d4ba293e7988a",
+        "android_client_info": {
+          "package_name": "com.pclub.attendance"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATmGPGCnhEzncmC9lYhixCTn0jvXrhykA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
