@@ -1,3 +1,5 @@
+import 'package:attendance_app/config/firebase.dart';
+import 'package:attendance_app/config/storage.dart';
 import 'package:attendance_app/screens/user_dashboard.dart';
 import 'package:attendance_app/screens/admin_dashboard.dart';
 import 'package:attendance_app/screens/user_events.dart';
@@ -12,8 +14,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:async';
 
+import 'package:permission_handler/permission_handler.dart';
+
 Future<void> main() async {
   fillData();
+  WidgetsFlutterBinding.ensureInitialized();
+  await FirebaseConfig.initialize();
+  FirebaseConfig.listenNotification();
+  FirebaseConfig.registerNotification();
+  FirebaseConfig.checkForInitialMessage();
+  Storage.initialize();
   runApp(const MyApp()); // Use MyApp directly
 }
 
