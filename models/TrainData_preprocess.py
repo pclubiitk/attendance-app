@@ -6,9 +6,7 @@ import cv2
 import matplotlib.pyplot as plt
 
 #defining dataset directories
-DATA_DIR_1 = './ASL_Alphabet_Dataset/asl_alphabet_train'
-#DATA_DIR_1 = './temp'
-#DATA_DIR_1 = './temp'
+DATA_DIR_1 = './ASL_Alphabet_Dataset/asl_alphabet_train/asl_alphabet_train'
 
 #mp_holistic = mp.solutions.holistic
 mp_hands = mp.solutions.hands
