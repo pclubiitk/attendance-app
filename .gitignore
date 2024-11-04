@@ -41,3 +41,12 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+
+# Model Related
+/models/MLvenv
+/models/ASL_Alphabet_Dataset
+/models/dataset.zip
+/models/data.pickle
+/models/tempTesting
+/models/model.p
