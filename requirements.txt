@@ -1,0 +1,9 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+mediapipe
+opencv-python
+tf-keras
+deepface
+flask
