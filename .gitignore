@@ -52,3 +52,7 @@ app.*.map.json
 /models/data.pickle
 /models/tempTesting
 /models/model.p
+
+
+# ENV FILE
+.env
